@@ -16,20 +16,20 @@ int isOdd(int x) {
   return isOdd(x - 2);
 }
 
-int main(int arg) {
+Q main(int arg) {
   mutable int n = arg;
   mutable Q list = nil;
   while (n > 1) {
     if (isPrime(n) != 0)
-      list = n .list;
+      list = n . list;
     n = n - 1;
   }
-  return list .length(list);
+  return list . length(list);
 }
 
 int length(Q c) {
   if (isAtom(c) != 0) return 0;
-  return 1 + length(right(c));
+  return 1 + length(right((Cell)c));
 }
 
 Q divides(int x, int y) {

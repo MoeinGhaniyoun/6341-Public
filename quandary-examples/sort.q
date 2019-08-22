@@ -14,15 +14,15 @@ Q randomList(int length) {
 
 Q sort(Q list) {
     if (isNil(list) != 0) return nil;
-    return insert(left(list), sort(right(list)));
+    return insert((int)left(list), sort(right(list)));
 }
 
 Q insert(int elem, Q list) {
     if (isNil(list) != 0) {
         return elem . nil;
     }
-    if ((int)elem <= left(list)) {
+    if ((int)elem <= (int)left(list)) {
         return elem . list;
     }
-    return left(list) . insert(elem, right(list));
+    return left((Cell)list) . insert(elem, right(list));
 }

@@ -22,7 +22,7 @@ mutable int doRightInc(Cell counters) {
 }
 
 Q main(int arg) {
-    mutable Cell counters = (0. 0);
-    int dummy = [ doLeftInc(counters) + doLeftInc(counters) ];
+    mutable Cell counters = 0 . 0;
+    int dummy = [ doRightInc(counters) + doRightInc(counters) ];
     return counters;
 }

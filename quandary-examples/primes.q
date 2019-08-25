@@ -39,7 +39,6 @@ Q divides(int x, int y) {
   }
   if (t == x) {
     return nil . nil;
-  } else {
-    return nil;
   }
+  return nil;
 }

@@ -2,8 +2,7 @@
 int fibRecursive(int n) {
   if (n < 2)
     return n;
-  else
-    return fibRecursive(n - 1) + fibRecursive(n - 2);
+  return fibRecursive(n - 1) + fibRecursive(n - 2);
 }
 
 int fibImperative(int n) {
@@ -25,9 +24,8 @@ int isOdd(int x) {
     return 0;
   } else if (x == 1) {
     return 1;
-  } else {
-    return isOdd(x - 2);
   }
+  return isOdd(x - 2);
 }
 
 Q main(int arg) {

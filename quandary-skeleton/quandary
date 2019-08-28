@@ -1,11 +1,15 @@
 #!/bin/bash
 
+MYDIR=`dirname $BASH_SOURCE`
+
+pushd "$MYDIR"
 if [[ $(make --dry-run -s) ]]
 then
   echo make thinks the interpreter is out of date and needs to be re-built
   exit
 fi
+popd
 
-java -cp $CUP_DIR/java-cup-11b-runtime.jar:. -ea interpreter.Interpreter $*
+java -cp "$CUP_DIR/java-cup-11b-runtime.jar:$MYDIR" -ea interpreter.Interpreter $*
 
 echo Quandary process returned $?

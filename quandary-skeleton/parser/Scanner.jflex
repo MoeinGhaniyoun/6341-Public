@@ -50,7 +50,7 @@ import interpreter.Interpreter;
 
 Ident = [a-zA-Z$_] [a-zA-Z0-9$_]*
 
-IntLiteral = 0 | (-)?[1-9][0-9]*
+IntLiteral = 0 | [1-9][0-9]*
 
 new_line = \r|\n|\r\n;
 

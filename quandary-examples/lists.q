@@ -1,8 +1,7 @@
+
 Q main(int arg) {
   Cell list = (Cell)randomList(arg);
-
   int max = max(list);
-
   return list . max;
 }
 
@@ -19,10 +18,11 @@ int max(Cell list) {
   if (isNil(rest) != 0) {
     return first;
   }
-  if (first > max((Cell)rest)) {
+  int max_of_rest = max((Cell)rest);
+  if (first > max_of_rest) {
     return first;
   }
-  return max((Cell)rest);
+  return max_of_rest;
 }
 
 int maxImperative(mutable Cell list) {

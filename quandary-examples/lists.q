@@ -1,7 +1,28 @@
-int main(int arg) {
-  Q list = (2 . (3 . (15 . (7 . nil))));
-  int max = maxImperative((Cell)list);
-  return max;
+Q main(int arg) {
+  Cell list = (Cell)randomList(arg);
+
+  int max = max(list);
+
+  return list . max;
+}
+
+Q randomList(int length) {
+  if (length == 0) {
+    return nil;
+  }
+  return randomInt(1000) . randomList(length - 1);
+}
+
+int max(Cell list) {
+  int first = (int)left(list);
+  Q rest = right(list);
+  if (isNil(rest) != 0) {
+    return first;
+  }
+  if (first > max((Cell)rest)) {
+    return first;
+  }
+  return max((Cell)rest);
 }
 
 int maxImperative(mutable Cell list) {

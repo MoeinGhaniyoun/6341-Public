@@ -64,6 +64,7 @@ public class Interpreter {
             System.out.println("Options:");
             System.out.println("  -gc (MarkSweep|RefCount|Explicit|NoGC)");
             System.out.println("  -heapsize BYTES");
+            System.out.println("BYTES must be a multiple of the word size (8)");
             return;
         }
 

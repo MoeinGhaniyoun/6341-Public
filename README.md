@@ -7,3 +7,5 @@ The `quandary-ref` folder contains a pre-built, obfuscated Quandary reference in
 The `quandary-skeleton` folder contains source code for an interpreter with missing functionality (search for "TODO"). See `quandary-skeleton/README` for build and run info.
 
 The `quandary-examples` folder contains Quandary code examples.
+
+The `project-grading` folder contains the grading template.

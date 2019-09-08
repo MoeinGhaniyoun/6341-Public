@@ -22,8 +22,8 @@ do_one_test() {
       SUB_OUT=`./quandary $TESTCASE_DIR/$PROGRAM $INPUT | tail -2`
     fi
 
-    #echo REF_OUT: $REF_OUT # Debugging
-    #echo SUB_OUT: $SUB_OUT # Debugging
+    #echo REF_OUT is $REF_OUT # Enable for debugging
+    #echo SUB_OUT is $SUB_OUT # Enable for debugging
 
     MAX_SCORE=$((MAX_SCORE + POINTS))
     if [ "$REF_OUT" == "$SUB_OUT" ]; then
@@ -36,6 +36,15 @@ do_one_test() {
 
 if [ "$#" -ne 4 ]; then
     echo Usage: grade.sh SUBMISSION_TGZ REF_IMPL TESTCASE_LIST TESTCASE_DIR
+    exit
+fi
+
+if [ -z "$JFLEX_DIR" ]; then
+    echo JFLEX_DIR isn\'t set
+    exit
+fi
+if [ -z "$CUP_DIR" ]; then
+    echo CUP_DIR isn\'t set
     exit
 fi
 
@@ -53,8 +62,8 @@ gzip -cd $SUBMISSION_TGZ | tar xf - -C $SUBMISSION_DIR
 
 # Build the submitted project
 cd $SUBMISSION_DIR
-make clean >& /dev/null
-make >& /dev/null # Remove redirect for debugging
+make clean
+make
 if [[ $? -ne 0 ]] ; then
     exit 1
 fi

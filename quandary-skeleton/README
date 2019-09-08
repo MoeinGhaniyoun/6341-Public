@@ -42,3 +42,12 @@ a public project on GitHub (or publicly available in any other way).
 That's a violation of academic integrity. And of course don't share or show your interpreter source code to anyone either.
 If you want to use GitHub to make a private project, note that (as a student) you can get a free upgrade to a GitHub account
 that allows private projects: https://education.github.com/discount_requests/new
+
+SUBMITTING A PROJECT
+
+You can use the following command to prepare a submission for upload to Carmen,
+where MY_PROJECT_DIR is the location of your project (the directory containing the quandary script and Makefile):
+
+  tar --exclude='.git*' -cf - -C MY_PROJECT_DIR . | gzip > myproject.tgz
+
+That command creates myproject.tgz in the current directory.

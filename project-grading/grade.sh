@@ -50,11 +50,19 @@ fi
 
 SUBMISSION_TGZ=$1
 
-SUBMISSION_DIR=`mktemp -d -p .`
+export TMPDIR=.
+SUBMISSION_DIR=`mktemp -d`
 
-REF_IMPL=`realpath --relative-to=$SUBMISSION_DIR $2`
 TESTCASE_LIST=`cat $3`
-TESTCASE_DIR=`realpath --relative-to=$SUBMISSION_DIR $4`
+
+if ! [ -x "$(command -v realpath)" ]; then
+  echo 'Command realpath is not installed. Trying something else, but $2 and $4 need to be relative paths for it to work!'
+  REF_IMPL="../$2"
+  TESTCASE_DIR="../$4"
+else
+  REF_IMPL=`realpath --relative-to=$SUBMISSION_DIR $2`
+  TESTCASE_DIR=`realpath --relative-to=$SUBMISSION_DIR $4`
+fi
 
 # Extract the submitted .tgz to a new directory
 echo Extracting submission to $SUBMISSION_DIR, will perform testing there

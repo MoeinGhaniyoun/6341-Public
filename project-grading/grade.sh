@@ -70,10 +70,20 @@ gzip -cd $SUBMISSION_TGZ | tar xf - -C $SUBMISSION_DIR
 
 # Build the submitted project
 cd $SUBMISSION_DIR
-make clean
-make
+make clean && make
 if [[ $? -ne 0 ]] ; then
-    exit 1
+    echo WARNING: Couldn\'t run make. Is the .tgz directory structure incorrect?
+    ACTUAL_MAKEFILE=`find | grep /Makefile`
+    if [[ ! -f $ACTUAL_MAKEFILE ]]; then exit 1; fi
+    ACTUAL=`dirname $ACTUAL_MAKEFILE`
+    REF_IMPL=`realpath --relative-to=$ACTUAL $REF_IMPL`
+    TESTCASE_DIR=`realpath --relative-to=$ACTUAL $TESTCASE_DIR`
+    echo Found $ACTUAL_MAKEFILE, trying to build and execute from $ACTUAL...
+    cd $ACTUAL
+    make clean && make
+    if [[ $? -ne 0 ]] ; then
+      exit 1
+    fi
 fi
 
 # Test each test case

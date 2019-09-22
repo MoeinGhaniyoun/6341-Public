@@ -1,0 +1,18 @@
+1 append.q 42
+1 badcalc.q 42
+1 badcast.q 42
+1 baddecls.q 42
+1 baddynamic.q 42
+1 badlists.q 42
+1 badstatic.q 42
+1 calc.q 42
+1 castless.q 42
+1 casts.q 42
+1 casts2.q 5
+1 casts2.q 42
+1 listsdet.q 42
+1 primes.q 42
+1 sideeffect.q 42
+1 sortdet.q 42
+1 updates.q 42
+

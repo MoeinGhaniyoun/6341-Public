@@ -66,14 +66,14 @@ fi
 
 # Extract the submitted .tgz to a new directory
 echo Extracting submission to $SUBMISSION_DIR, will perform testing there
-gzip -cd $SUBMISSION_TGZ | tar xf - -C $SUBMISSION_DIR
+gzip -cd "$SUBMISSION_TGZ" | tar xf - -C $SUBMISSION_DIR
 
 # Build the submitted project
 cd $SUBMISSION_DIR
 make clean && make
 if [[ $? -ne 0 ]] ; then
     echo WARNING: Couldn\'t run make. Is the .tgz directory structure incorrect?
-    ACTUAL_MAKEFILE=`find | grep /Makefile`
+    ACTUAL_MAKEFILE=`find | grep '/Makefile\|makefile'`
     if [[ ! -f $ACTUAL_MAKEFILE ]]; then exit 1; fi
     ACTUAL=`dirname $ACTUAL_MAKEFILE`
     REF_IMPL=`realpath --relative-to=$ACTUAL $REF_IMPL`

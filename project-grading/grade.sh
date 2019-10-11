@@ -14,12 +14,12 @@ do_one_test() {
     INPUT=$3
     echo -n "Testing $PROGRAM $INPUT, worth $POINTS points: "
     # Compare the last line if process returns nonzero code; otherwise compare last two lines
-    REF_OUT=`$REF_IMPL $TESTCASE_DIR/$PROGRAM $INPUT | tail -1`
+    REF_OUT=`$REF_IMPL $TESTCASE_DIR/$PROGRAM $INPUT 2>&1 | tail -1`
     if [ "$REF_OUT" != "Quandary process returned 0" ]; then
-      SUB_OUT=`./quandary $TESTCASE_DIR/$PROGRAM $INPUT | tail -1`
+      SUB_OUT=`./quandary $TESTCASE_DIR/$PROGRAM $INPUT 2>&1 | tail -1`
     else
-      REF_OUT=`$REF_IMPL $TESTCASE_DIR/$PROGRAM $INPUT | tail -2`
-      SUB_OUT=`./quandary $TESTCASE_DIR/$PROGRAM $INPUT | tail -2`
+      REF_OUT=`$REF_IMPL $TESTCASE_DIR/$PROGRAM $INPUT 2>&1 | tail -2`
+      SUB_OUT=`./quandary $TESTCASE_DIR/$PROGRAM $INPUT 2>&1 | tail -2`
     fi
 
     #echo REF_OUT is $REF_OUT # Enable for debugging

@@ -1,12 +1,15 @@
-1  blarg.q      42
-5  fibserial.q  20  -gc MarkSweep
-5  fibfree.q    20  -gc Explicit
-5  primes.q    100  -gc MarkSweep -heapsize  800
-5  primes.q    100  -gc MarkSweep -heapsize  400
-5  sortdet.q    42  -gc MarkSweep -heapsize 1024
-5  sortdet.q    42  -gc Explicit  -heapsize 1024
-5  append2.q    42  -gc Explicit  -heapsize   80
-5  append2.q    42  -gc MarkSweep -heapsize   80
-5  append2.q    42  -gc MarkSweep -heapsize  120
-5  append.q     42  -gc MarkSweep -heapsize   64
-5  append.q     42  -gc MarkSweep -heapsize   72
+1  blarg.q      42  -gc NoGC      -heapsize 16384
+5  fibserial.q  20  -gc MarkSweep -heapsize 16384
+5  fibfree.q    20  -gc Explicit  -heapsize 16384
+5  primes.q    100  -gc MarkSweep -heapsize   800
+5  primes.q    100  -gc MarkSweep -heapsize   400
+5  sortdet.q    42  -gc MarkSweep -heapsize  1024
+5  sortdet.q    42  -gc Explicit  -heapsize  1024
+5  append2.q    42  -gc Explicit  -heapsize    80
+5  append2.q    42  -gc MarkSweep -heapsize    80
+5  append2.q    42  -gc MarkSweep -heapsize   120
+5  append.q     42  -gc MarkSweep -heapsize    64
+5  append.q     42  -gc MarkSweep -heapsize    72
+5  garbage.q 10000  -gc MarkSweep -heapsize 16384
+5  cycles.q  10000  -gc MarkSWeep -heapsize 16384
+5  whoops.q     42  -gc MarkSWeep -heapsize 16384

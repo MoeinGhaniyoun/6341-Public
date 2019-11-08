@@ -13,3 +13,4 @@
 5  garbage.q 10000  -gc MarkSweep -heapsize 16384
 5  cycles.q  10000  -gc MarkSweep -heapsize 16384
 5  whoops.q     42  -gc MarkSweep -heapsize 16384
+5  temproot.q 1000  -gc MarkSweep -heapsize  1440

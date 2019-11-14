@@ -21,7 +21,7 @@ mutable int doLeftInc(Cell counters, int myThread) {
 
 mutable Q main(int arg) {
     mutable Cell counters = 0 . 0;
-    int dummy = doLeftInc(counters, 0) + doLeftInc(counters, 1);
+    int dummy = [ doLeftInc(counters, 0) + doLeftInc(counters, 1) ];
     int value = (int)left(counters);
     return value;
 }

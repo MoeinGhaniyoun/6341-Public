@@ -3,7 +3,7 @@ Q main(int arg) {
 }
 
 int fib(int n) {
-    return fibConcurrent(n);
+    return fibConcurrent(n, 0);
 }
 
 int fibSerial(int n) {

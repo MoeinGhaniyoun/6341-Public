@@ -16,9 +16,6 @@ do_one_test() {
       SUB_OUT=`./quandary $OPTIONS $TESTCASE_DIR/$PROGRAM $INPUT 2>&1 | tail -2`
     fi
 
-    #echo REF_OUT is $REF_OUT # Enable for debugging
-    #echo SUB_OUT is $SUB_OUT # Enable for debugging
-
     MAX_SCORE=$((MAX_SCORE + POINTS))
     if [ "$REF_OUT" == "$SUB_OUT" ]; then
       echo PASSED
@@ -26,6 +23,9 @@ do_one_test() {
     else
       echo FAILED
     fi
+
+    # echo REF_OUT is $REF_OUT # Enable for debugging
+    # echo SUB_OUT is $SUB_OUT # Enable for debugging
 }
 
 if [ "$#" -ne 4 ]; then

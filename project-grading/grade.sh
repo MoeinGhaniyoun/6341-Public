@@ -67,7 +67,7 @@ cd $SUBMISSION_DIR
 make clean && make
 if [[ $? -ne 0 ]] ; then
     echo WARNING: Couldn\'t run make. Is the .tgz directory structure incorrect?
-    ACTUAL_MAKEFILE=`find | grep '/Makefile\|makefile'`
+    ACTUAL_MAKEFILE=`find | grep '/Makefile\|/makefile'`
     if [[ ! -f $ACTUAL_MAKEFILE ]]; then exit 1; fi
     ACTUAL=`dirname $ACTUAL_MAKEFILE`
     REF_IMPL=`realpath --relative-to=$ACTUAL $REF_IMPL`

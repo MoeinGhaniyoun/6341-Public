@@ -1,6 +1,8 @@
-1  blarg.q         42 -gc NoGC -heapsize 16384
-5  drfcounter.q    42 -gc NoGC -heapsize 16384
-5  fibpar.q        28 -gc NoGC -heapsize 16384
-5  indep.q      10000 -gc NoGC -heapsize 16384
-5  pcfixed.q       42 -gc NoGC -heapsize 16384
-5  steps.q         42 -gc NoGC -heapsize 16384
+1  blarg.q         42 -gc NoGC -heapsize   16384
+5  drfcounter.q    42 -gc NoGC -heapsize   16384
+5  fibpar.q        28 -gc NoGC -heapsize   16384
+5  indep.q      10000 -gc NoGC -heapsize   16384
+5  pcfixed.q       42 -gc NoGC -heapsize   16384
+5  steps.q         42 -gc NoGC -heapsize   16384
+5  qsort.q         42 -gc NoGC -heapsize 1638400
+5  bubblishsort.q  42 -gc NoGC -heapsize 1638400

@@ -6,3 +6,5 @@
 5  steps.q         42 -gc NoGC -heapsize   16384
 5  qsort.q         42 -gc NoGC -heapsize 1638400
 5  bubblishsort.q  42 -gc NoGC -heapsize 1638400
+5  conclist.q    1000 -gc NoGC -heapsize 1638400
+5  concsum.q     1000 -gc NoGC -heapsize 1638400

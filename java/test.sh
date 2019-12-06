@@ -4,5 +4,5 @@ javac Counter.java
 
 while true
 do
-  timeout -v 3 java Counter
+  timeout 3 java Counter || echo Timed out
 done

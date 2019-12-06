@@ -1,5 +1,5 @@
 class Counter {
-    private int value;
+    private volatile int value;
     Counter(int value) { this.value = value; }
     void max(Counter other) {
         randomSleep();

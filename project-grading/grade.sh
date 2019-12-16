@@ -22,10 +22,9 @@ do_one_test() {
       SCORE=$((SCORE + POINTS))
     else
       echo FAILED
+      # echo REF_OUT is $REF_OUT # Enable for debugging
+      # echo SUB_OUT is $SUB_OUT # Enable for debugging
     fi
-
-    # echo REF_OUT is $REF_OUT # Enable for debugging
-    # echo SUB_OUT is $SUB_OUT # Enable for debugging
 }
 
 if [ "$#" -ne 4 ]; then

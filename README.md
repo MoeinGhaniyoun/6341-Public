@@ -1,4 +1,4 @@
-# 6341-Public
+### 6341-Public
 
 `quandary.pdf` describes the Quandary language and runtime specification.
 
@@ -9,3 +9,9 @@ The `quandary-skeleton` folder contains source code for an interpreter with miss
 The `quandary-examples` folder contains Quandary code examples.
 
 The `project-grading` folder contains the grading template.
+
+#### GETTING STARTED
+
+See `TROUBLESHOOTING` if you have trouble getting the Quandary reference interpreter or skeleton interpreter running.
+
+You should read `quandary.pdf` before attempting the assignments.

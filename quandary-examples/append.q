@@ -14,7 +14,7 @@ mutable Ref add(Ref list, Q elem) {
   }
   mutable Ref curr = list;
   while (isNil(right(curr)) == 0) {
-    curr = right(curr);
+    curr = (Ref)right(curr);
   }
   setRight(curr, elem . nil);
   return list;
@@ -26,5 +26,5 @@ Ref addR(Ref list, int elem) {
     return elem . nil;
   }
   return left(list) .
-         addR(right(list), elem);
+         addR((Ref)right(list), elem);
 }

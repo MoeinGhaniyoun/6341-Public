@@ -21,10 +21,10 @@ mutable Q sort(Ref list) {
             }
             rel(tmp2);
             rel(tmp1);
-            tmp2 = right(tmp2);
+            tmp2 = (Ref)right(tmp2);
             pos2 = pos2 + 1;
         }
-        tmp1 = right(tmp1);
+        tmp1 = (Ref)right(tmp1);
         pos1 = pos1 + 1;
     }
     return pos1;
@@ -35,20 +35,20 @@ Ref concat(Ref first, Ref second) {
         return second;
     if (isNil(right(first)) != 0)
         return left(first) . second;
-    return left(first) . concat(right(first), second);
+    return left(first) . concat((Ref)right(first), second);
 }
 
 int isSorted(Ref list) {
     if (isNil(list) != 0 || isNil(right(list)) != 0)
         return 1;
-    if ((int)left(list) > (int)left(right(list)))
+    if ((int)left(list) > (int)left((Ref)right(list)))
         return 0;
-    return isSorted(right(list));
+    return isSorted((Ref)right(list));
 }
 
 int length(Ref list) {
     if (isNil(list) != 0) return 0;
-    return 1 + length(right(list));
+    return 1 + length((Ref)right(list));
 }
 
 Ref randomList(int n) {

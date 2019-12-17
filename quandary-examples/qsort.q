@@ -7,7 +7,7 @@ Ref sort(Ref list) {
     if (isNil(list) != 0 || isNil(right(list)) != 0) return list;
     int pivot = (int)left(list);
     Ref lists = [ sort(subList(list, pivot, -1)) . sort(subList(list, pivot, 1)) ];
-    return concat(left(lists), concat(subList(list, pivot, 0), right(lists)));
+    return concat((Ref)left(lists), concat(subList(list, pivot, 0), (Ref)right(lists)));
 }
 
 Ref subList(Ref list, int pivot, int comparator) {
@@ -27,7 +27,7 @@ Ref concat(Ref first, Ref second) {
         return second;
     if (isNil(right(first)) != 0)
         return left(first) . second;
-    return left(first) . concat(right(first), second);
+    return left(first) . concat((Ref)right(first), second);
 }
 
 int isSorted(Ref list) {

@@ -11,7 +11,7 @@ Ref addR(Ref list, int elem) {
     return elem . nil;
   }
   Q left = left(list);
-  Q right = right(list);
+  Ref right = (Ref)right(list);
   free list;
   return left . addR(right, elem);
 }

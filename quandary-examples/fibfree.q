@@ -34,7 +34,7 @@ Q main(int arg) {
 
 int fibMemHog(int n) {
   if (n < 2) return n;
-  Cell result = fibMemHog(n - 1) . fibMemHog(n - 2);
+  Ref result = fibMemHog(n - 1) . fibMemHog(n - 2);
   int sum = (int)left(result) + (int)right(result);
   free result;
   return sum;

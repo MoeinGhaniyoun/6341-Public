@@ -1,5 +1,5 @@
 mutable Q main(mutable int arg) {
-    Cell x = nil . nil;
+    Ref x = nil . nil;
     while (arg > 0) {
         setLeft(x, arg . arg);
         setRight(x, arg . arg);

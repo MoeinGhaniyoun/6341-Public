@@ -17,7 +17,7 @@ mutable Q rmRandomEarlyElement(Ref list) {
 
 int length(Ref list) {
 	if (isNil(list) != 0) return 0;
-	return 1 + length(right(list));
+	return 1 + length((Ref)right(list));
 }
 
 Ref randomList(int length) {
@@ -34,7 +34,7 @@ mutable Q rmElement(Ref list, int index) {
     } else if (index == 1) {
         setRight(list, right((Ref)right(list)));
     } else {
-        rmElement(right(list), index - 1);
+        rmElement((Ref)right(list), index - 1);
     }
     return nil;
 }

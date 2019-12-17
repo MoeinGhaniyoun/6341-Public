@@ -62,7 +62,7 @@ public class Interpreter {
         } catch (Exception ex) {
             System.out.println("Expected format: quandary [OPTIONS] QUANDARY_PROGRAM_FILE INTEGER_ARGUMENT");
             System.out.println("Options:");
-            System.out.println("  -gc (MarkSweep|RefCount|Explicit|NoGC)");
+            System.out.println("  -gc (MarkSweep|Explicit|NoGC)");
             System.out.println("  -heapsize BYTES");
             System.out.println("BYTES must be a multiple of the word size (8)");
             return;

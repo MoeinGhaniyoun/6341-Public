@@ -1,22 +1,22 @@
 
 Q main(int arg) {
-    Q list = (6 . (2 . (23 . (4 . (45 . (22 . (4 . (5 . (42 . (33 . (22 . (24 . (54 . (33 . (25 .
+    Ref list = (6 . (2 . (23 . (4 . (45 . (22 . (4 . (5 . (42 . (33 . (22 . (24 . (54 . (33 . (25 .
              (18 . (36 . (54 . (43 . (43 . (54 . (24 . (22 . (24 . (43 . (3 . (72 . (2 . nil))))))))))))))))))))))))))));
-    Q sortedList = sort(list);
+    Ref sortedList = sort(list);
     return sortedList;
 }
 
-Q sort(Q list) {
+Ref sort(Ref list) {
     if (isNil(list) != 0) return nil;
-    return insert((int)left((Cell)list), sort(right((Cell)list)));
+    return insert((int)left(list), sort((Ref)right(list)));
 }
 
-Q insert(int elem, Q list) {
+Ref insert(int elem, Ref list) {
     if (isNil(list) != 0) {
         return elem . nil;
     }
-    if ((int)elem <= (int)left((Cell)list)) {
+    if ((int)elem <= (int)left(list)) {
         return elem . list;
     }
-    return left((Cell)list) . insert(elem, right((Cell)list));
+    return left(list) . insert(elem, (Ref)right(list));
 }

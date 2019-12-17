@@ -1,6 +1,6 @@
 mutable Q main(int arg) {
-  Cell data = ((2 . nil) . ((8 . nil) . 7));
-  Q dummy = setRight((Cell)left(data), right(data));
+  Ref data = ((2 . nil) . ((8 . nil) . 7));
+  setRight((Ref)left(data), right(data));
   return sum(data);
 }
 
@@ -11,6 +11,5 @@ int sum(Q data) {
   if (isAtom(data) != 0) {
     return (int)data;
   }
-  return sum(left((Cell)data)) + sum(right((Cell)data));
+  return sum(left((Ref)data)) + sum(right((Ref)data));
 }
-

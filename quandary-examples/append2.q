@@ -12,6 +12,6 @@ Ref addR(Ref list, int elem) {
   }
   Q left = left(list);
   Q right = right(list);
-  free(list);
+  free list;
   return left . addR(right, elem);
 }

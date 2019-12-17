@@ -1,18 +1,18 @@
 
-mutable int doLeftInc(Cell counters, int myThread, int count) {
+mutable int doLeftInc(Ref counters, int myThread, int count) {
     mutable int i = 0;
     while (i < count) {
         mutable int done = 0;
         while (done == 0) {
-          int dummy1 = acq(counters);
+          acq(counters);
           int value = (int)left(counters);
           int whoseTurn = (int)right(counters);
           if (whoseTurn == myThread) {
-              int dummy2 = setLeft(counters, value + 1);
-              int dummy3 = setRight(counters, 1 - whoseTurn);
+              setLeft(counters, value + 1);
+              setRight(counters, 1 - whoseTurn);
               done = 1;
           }
-          int dummy4 = rel(counters);
+          rel(counters);
         }
         i = i + 1;
     }
@@ -20,7 +20,7 @@ mutable int doLeftInc(Cell counters, int myThread, int count) {
 }
 
 mutable Q main(int arg) {
-    mutable Cell counters = 0 . 0;
+    mutable Ref counters = 0 . 0;
     int dummy = [ doLeftInc(counters, 0, arg) + doLeftInc(counters, 1, arg) ];
     int value = (int)left(counters);
     return value;

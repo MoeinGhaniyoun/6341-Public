@@ -4,9 +4,9 @@ Q main(int arg) {
     } else if (arg == 2) {
         return (int)foo(nil . nil);
     }
-    return (Cell)foo(nil . (nil . nil));
+    return (Ref)foo(nil . (nil . nil));
 }
 
-Q foo(Cell c) {
+Q foo(Ref c) {
     return left(c);
 }

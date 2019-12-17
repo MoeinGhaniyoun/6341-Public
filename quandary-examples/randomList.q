@@ -1,7 +1,7 @@
 mutable Q main (mutable int arg) {
 	if (arg == 0)
 		return nil;
-	mutable Q list = randomList(arg);
+	mutable Ref list = randomList(arg);
 	while (arg > 0) {
 		int index = randomInt(arg);
 		list = rmElement(list, index);
@@ -11,24 +11,24 @@ mutable Q main (mutable int arg) {
 	return length(list);
 }
 
-int length(Q list) {
+int length(Ref list) {
 	if (isNil(list) != 0) return 0;
-	return 1 + length(right((Cell)list));
+	return 1 + length((Ref)right(list));
 }
 
-Q randomList(int length) {
+Ref randomList(int length) {
 	if (length == 0) {
         return nil;
     }
     return randomInt(100000) . randomList(length - 1);
 }
 
-mutable Q rmElement(Q list, int index) {
+mutable Ref rmElement(Ref list, int index) {
 	if (isNil(list) != 0)
 		return nil;
 	if (index == 0) {
-		return right((Cell)list);
+		return (Ref)right(list);
 	}
-	int dummy = setRight((Cell)list, rmElement(right((Cell)list), index-1));
+	setRight(list, rmElement((Ref)right(list), index-1));
 	return list;
 }

@@ -13,15 +13,15 @@ int mycalc(Q expr) {
     if (isAtom(expr) != 0) {
         return (int)expr;
     }
-    Cell e = (Cell)expr;
+    Ref e = (Ref)expr;
     mutable int op = (int)left(e);
-    mutable Q left = left((Cell)right(e));
-    Q right = right((Cell)right(e));
+    mutable Q left = left((Ref)right(e));
+    Q right = right((Ref)right(e));
     if (op == plus()) {
         return mycalc(left) + mycalc(right);
     }
     if (op == times()) {
         return mycalc(left) * mycalc(right);
     }
-    return 42;
+    return 42; /* unreachable */
 }

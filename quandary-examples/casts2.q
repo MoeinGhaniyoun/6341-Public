@@ -1,6 +1,6 @@
 int foo(int i, Q q, Ref c) {
   int i1 = i;
-  if (isAtom(q) != 0 && isNil((Ref)q) == 0) {
+  if (isAtom(q) != 0 && isNil(q) == 0) {
     int i2 = (int)q;
   }
 

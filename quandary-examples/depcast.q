@@ -1,5 +1,5 @@
 
-Q foo(Q asdf, Cell hjkl) {
+Q foo(Q asdf, Ref hjkl) {
   return (left(hjkl) . asdf);
 }
 

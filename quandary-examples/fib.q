@@ -35,15 +35,15 @@ Q main(int arg) {
 
 int fibMemHog(int n) {
   if (n < 2) return n;
-  Cell result = fibMemHog(n - 1) . fibMemHog(n - 2);
+  Ref result = fibMemHog(n - 1) . fibMemHog(n - 2);
   int sum = (int)left(result) + (int)right(result);
   return sum;
 }
 
 int fibConcurrent(int n) {
   if (n < 2) return n;
-  Cell result = [ fibConcurrent(n - 1) . fibConcurrent(n - 2) ];
+  Ref result = [ fibConcurrent(n - 1) . fibConcurrent(n - 2) ];
   int sum = (int)left(result) + (int)right(result);
-  int freed = free(result);
+  free result;
   return sum;
 }

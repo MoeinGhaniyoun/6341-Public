@@ -36,6 +36,6 @@ int fibMemHog(int n) {
   if (n < 2) return n;
   Cell result = fibMemHog(n - 1) . fibMemHog(n - 2);
   int sum = (int)left(result) + (int)right(result);
-  int freed = free(result);
+  free result;
   return sum;
 }

@@ -11,7 +11,7 @@ int isPrime(int x) {
 
 Q main(int arg) {
   mutable int n = arg;
-  mutable Q list = nil;
+  mutable Ref list = nil;
   while (n > 1) {
     if (isPrime(n) != 0)
       list = n . list;

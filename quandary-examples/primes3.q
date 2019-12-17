@@ -18,7 +18,7 @@ int isOdd(int x) {
 
 Q main(int arg) {
   mutable int n = arg;
-  mutable Q list = nil;
+  mutable Ref list = nil;
   while (n > 1) {
     if (isPrime(n) != 0)
       list = n . list;
@@ -27,9 +27,9 @@ Q main(int arg) {
   return list . length(list);
 }
 
-int length(Q c) {
+int length(Ref c) {
   if (isAtom(c) != 0) return 0;
-  return 1 + length(right((Cell)c));
+  return 1 + length((Ref)right(c));
 }
 
 Q divides(mutable int x, int y) {

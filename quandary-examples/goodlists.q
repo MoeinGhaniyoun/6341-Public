@@ -1,24 +1,24 @@
 
 Q main(int arg) {
-  Cell list = (Cell)orderedList(arg);
+  Ref list = orderedList(arg);
   int max = max(list);
-  return (Cell)(list . max);
+  return list . max;
 }
 
-Q orderedList(int length) {
+Ref orderedList(int length) {
   if (length == 0) {
     return nil;
   }
   return length . orderedList(length - 1);
 }
 
-int max(Cell list) {
+int max(Ref list) {
   int first = (int)left(list);
-  Q rest = right(list);
+  Ref rest = (Ref)right(list);
   if (isNil(rest) != 0) {
     return first;
   }
-  int max_of_rest = max((Cell)rest);
+  int max_of_rest = max(rest);
   if (first > max_of_rest) {
     return first;
   }

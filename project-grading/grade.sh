@@ -8,6 +8,13 @@ do_one_test() {
     OPTIONS=$*
     echo -n "Testing $OPTIONS $PROGRAM $INPUT, worth $POINTS points: "
     # Compare the last line if process returns nonzero code; otherwise compare last two lines
+
+    # Enable this for seeing reference interpreter output only:
+    #echo ""
+    #$REF_IMPL $OPTIONS $TESTCASE_DIR/$PROGRAM $INPUT
+    #echo ""
+    #return
+
     REF_OUT=`$REF_IMPL $OPTIONS $TESTCASE_DIR/$PROGRAM $INPUT 2>&1 | tail -1`
     if [ "$REF_OUT" != "Quandary process returned 0" ]; then
       SUB_OUT=`./quandary $OPTIONS $TESTCASE_DIR/$PROGRAM $INPUT 2>&1 | tail -1`
@@ -22,8 +29,8 @@ do_one_test() {
       SCORE=$((SCORE + POINTS))
     else
       echo FAILED
-      # echo REF_OUT is $REF_OUT # Enable for debugging
-      # echo SUB_OUT is $SUB_OUT # Enable for debugging
+      #echo REF_OUT is $REF_OUT # Enable for debugging
+      #echo SUB_OUT is $SUB_OUT # Enable for debugging
     fi
 }
 

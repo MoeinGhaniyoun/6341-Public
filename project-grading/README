@@ -25,5 +25,5 @@ Here's an example run that should work from 6341-Public if you provide it myfirs
 
   ./grade.sh myfirstproject.tgz ../quandary-ref/quandary testcases-example.dat ../quandary-examples
 
-The file testcases-example.dat is just an example. I think it lists the subset of examples
-for which the first project should execute correctly. The point values are made up.
+The file *-example.dat files give test cases for which each project should execute correctly.
+The point values are made up.

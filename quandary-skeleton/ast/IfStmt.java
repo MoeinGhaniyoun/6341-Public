@@ -10,11 +10,12 @@ public class IfStmt extends Stmt {
     final Stmt thenStmt;
     final Stmt elseStmt;
 
-    public IfStmt(Cond cond, Stmt thenStmt) {
-        this(cond, thenStmt, null);
+    public IfStmt(Cond cond, Stmt thenStmt, Location loc) {
+        this(cond, thenStmt, null, loc);
     }
 
-    public IfStmt(Cond cond, Stmt thenStmt, Stmt elseStmt) {
+    public IfStmt(Cond cond, Stmt thenStmt, Stmt elseStmt, Location loc) {
+        super(loc);
         this.cond = cond;
         this.thenStmt = thenStmt;
         this.elseStmt = elseStmt;

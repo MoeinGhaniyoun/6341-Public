@@ -11,7 +11,8 @@ public class LogicalCond extends Cond {
     final int operator;
     final Cond expr2;
 
-    public LogicalCond(Cond expr1, int operator, Cond expr2) {
+    public LogicalCond(Cond expr1, int operator, Cond expr2, Location loc) {
+        super(loc);
         this.expr1 = expr1;
         this.operator = operator;
         this.expr2 = expr2;
@@ -28,6 +29,6 @@ public class LogicalCond extends Cond {
             case AND: return expr1.eval(env) && expr2.eval(env);
             case OR:  return expr1.eval(env) || expr2.eval(env);
         }
-        throw new RuntimeException("Unreachable");
+        throw new RuntimeException("Unreachable in LogicalCond.eval");
     }
 }

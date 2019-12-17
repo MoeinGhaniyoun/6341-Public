@@ -14,7 +14,8 @@ public class BinaryExpr extends Expr {
     final int operator;
     final Expr expr2;
 
-    public BinaryExpr(Expr expr1, int operator, Expr expr2) {
+    public BinaryExpr(Expr expr1, int operator, Expr expr2, Location loc) {
+        super(loc);
         this.expr1 = expr1;
         this.operator = operator;
         this.expr2 = expr2;
@@ -50,6 +51,6 @@ public class BinaryExpr extends Expr {
                 Object returnValue = Interpreter.getInterpreter().cons(value1, value2, env);
                 return returnValue;
         }
-        throw new RuntimeException("Unreachable");
+        throw new RuntimeException("Unreachable in BinaryExpr.doOperation");
     }
 }

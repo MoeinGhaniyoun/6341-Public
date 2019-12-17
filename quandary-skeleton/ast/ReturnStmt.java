@@ -9,7 +9,8 @@ public class ReturnStmt extends Stmt {
 
     final Expr expr;
 
-    public ReturnStmt(Expr expr) {
+    public ReturnStmt(Expr expr, Location loc) {
+        super(loc);
         this.expr = expr;
     }
 

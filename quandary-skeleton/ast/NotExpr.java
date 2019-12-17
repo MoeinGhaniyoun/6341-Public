@@ -6,7 +6,8 @@ public class NotExpr extends Cond {
 
     final Cond expr;
 
-    public NotExpr(Cond expr) {
+    public NotExpr(Cond expr, Location loc) {
+        super(loc);
         this.expr = expr;
     }
 

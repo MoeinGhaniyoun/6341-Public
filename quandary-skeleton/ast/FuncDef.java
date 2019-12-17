@@ -13,7 +13,8 @@ public class FuncDef extends ASTNode {
     final List<VarDecl> formalDecls;
     final List<Stmt> stmts;
 
-    public FuncDef(VarDecl varDecl, List<VarDecl> formalDecls, List<Stmt> stmts) {
+    public FuncDef(VarDecl varDecl, List<VarDecl> formalDecls, List<Stmt> stmts, Location loc) {
+        super(loc);
         this.varDecl = varDecl;
         this.formalDecls = formalDecls;
         this.stmts = stmts;
@@ -40,6 +41,6 @@ public class FuncDef extends ASTNode {
         } catch (EarlyReturnException ex) {
             return ex.getReturnValue();
         }
-        throw new RuntimeException("Unexpected");
+        throw new RuntimeException("Unexpected in FuncDef.execBody");
     }
 }

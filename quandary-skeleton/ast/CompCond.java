@@ -15,7 +15,8 @@ public class CompCond extends Cond {
     final int operator;
     final Expr expr2;
 
-    public CompCond(Expr expr1, int operator, Expr expr2) {
+    public CompCond(Expr expr1, int operator, Expr expr2, Location loc) {
+        super(loc);
         this.expr1 = expr1;
         this.operator = operator;
         this.expr2 = expr2;
@@ -44,6 +45,6 @@ public class CompCond extends Cond {
             case LT: return (long)expr1.eval(env) <  (long)expr2.eval(env);
             case GT: return (long)expr1.eval(env) >  (long)expr2.eval(env);
         }
-        throw new RuntimeException("Unreachable");
+        throw new RuntimeException("Unreachable in CompCond.eval");
     }
 }

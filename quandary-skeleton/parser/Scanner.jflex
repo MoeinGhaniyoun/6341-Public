@@ -25,19 +25,19 @@ import interpreter.Interpreter;
     ComplexSymbolFactory symbolFactory;
 
   private Symbol symbol(String name, int sym) {
-      return symbolFactory.newSymbol(name, sym, new Location(yyline+1,yycolumn+1,yychar), new Location(yyline+1,yycolumn+yylength(),yychar+yylength()));
+      return symbolFactory.newSymbol(name, sym, new Location(yyline+1,yycolumn+1,yyline+1), new Location(yyline+1,yycolumn+yylength(),yycolumn+1));
   }
   
   private Symbol symbol(String name, int sym, Object val) {
-      Location left = new Location(yyline + 1, yycolumn + 1, yychar);
-      Location right = new Location(yyline + 1, yycolumn + yylength(), yychar + yylength());
+      Location left = new Location(yyline + 1, yycolumn + 1, yyline + 1);
+      Location right = new Location(yyline + 1, yycolumn + yylength(), yycolumn + 1);
       return symbolFactory.newSymbol(name, sym, left, right, val);
   } 
-  private Symbol symbol(String name, int sym, Object val, int buflength) {
+  /*private Symbol symbol(String name, int sym, Object val, int buflength) {
       Location left = new Location(yyline + 1, yycolumn + yylength() - buflength, yychar + yylength() - buflength);
       Location right = new Location(yyline + 1, yycolumn + yylength(), yychar + yylength());
       return symbolFactory.newSymbol(name, sym, left, right, val);
-  }       
+  }*/      
   private void error(String message) {
     System.out.println("Error at line "+ (yyline + 1) + ", column " + (yycolumn + 1) + " : " + message);
   }
@@ -61,7 +61,7 @@ white_space = {new_line} | [ \t\f]
 <YYINITIAL>{
 /* keywords */
 "int"             { return symbol("int",         INT); }
-"Cell"            { return symbol("Cell",        CELL); }
+"Ref"             { return symbol("Ref",         REF); }
 "Q"               { return symbol("Q",           QTYPE); }
 "mutable"         { return symbol("mutable",     MUTABLE); }
 "nil"             { return symbol("nil",         NIL); }
@@ -98,7 +98,8 @@ white_space = {new_line} | [ \t\f]
 "||"              { return symbol("||", OR); }
 "!"               { return symbol("!",  NOT); }
 
-
+"/*" [^*] ~"*/" | "/*" "*"+ "/"
+                  { /* ignore comments */ }
 
 {white_space}     { /* ignore */ }
 

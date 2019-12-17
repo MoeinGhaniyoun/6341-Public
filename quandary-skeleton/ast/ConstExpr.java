@@ -1,17 +1,19 @@
 package ast;
 
 import interpreter.Env;
-import interpreter.Interpreter;
+import interpreter.CellRef;
 
 public class ConstExpr extends Expr {
 
     final Object value;
 
-    public ConstExpr() {
-        this.value = Interpreter.NIL;
+    public ConstExpr(Location loc) {
+        super(loc);
+        this.value = CellRef.NIL;
     }
 
-    public ConstExpr(long value) {
+    public ConstExpr(long value, Location loc) {
+        super(loc);
         this.value = value;
     }
 

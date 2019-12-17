@@ -2,15 +2,15 @@ package ast;
 
 public enum Type {
 
-    INT, CELL, QTYPE;
+    INT, REF, QTYPE;
 
     @Override
     public String toString() {
         switch (this) {
             case INT:   return "int";
-            case CELL:  return "Cell";
+            case REF:  return "Ref";
             case QTYPE: return "Q";
         }
-        throw new RuntimeException("Unreachable");
+        throw new RuntimeException("Unreachable in Type.toString");
     }
 }

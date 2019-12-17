@@ -9,7 +9,8 @@ public class CompoundStmt extends Stmt {
 
     final List<Stmt> stmts;
 
-    public CompoundStmt(List<Stmt> stmts) {
+    public CompoundStmt(List<Stmt> stmts, Location loc) {
+        super(loc);
         this.stmts = stmts;
     }
 

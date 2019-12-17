@@ -12,7 +12,8 @@ public class CallExpr extends Expr {
     final String ident;
     final List<Expr> exprs;
 
-    public CallExpr(String ident, List<Expr> exprs) {
+    public CallExpr(String ident, List<Expr> exprs, Location loc) {
+        super(loc);
         this.ident = ident;
         this.exprs = exprs;
     }
@@ -36,7 +37,7 @@ public class CallExpr extends Expr {
             // TODO: don't just use the same env?
             returnValue = funcDef.execBody(env, actuals);
         } else {
-            returnValue = Interpreter.getInterpreter().callBuiltInFunction(ident, actuals, env);
+            returnValue = Interpreter.getInterpreter().callBuiltInFunction(ident, actuals, env, loc);
         }
         if (returnValue == null) {
             // Static checking should make this error impossible

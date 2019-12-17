@@ -1,15 +1,14 @@
 package ast;
 
-import interpreter.CellRef;
 import interpreter.Env;
-import interpreter.Interpreter;
 
 public class CastExpr extends Expr {
 
     final Type type;
     final Expr expr;
 
-    public CastExpr(Type type, Expr expr) {
+    public CastExpr(Type type, Expr expr, Location loc) {
+        super(loc);
         this.type = type;
         this.expr = expr;
     }

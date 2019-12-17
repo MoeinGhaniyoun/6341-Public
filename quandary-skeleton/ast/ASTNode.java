@@ -4,7 +4,13 @@ import java.util.List;
 
 abstract class ASTNode {
 
-    // Helps with printing
+    final Location loc;
+
+    ASTNode(Location loc) {
+        this.loc = loc;
+    }
+
+    // Helper function
     static<T> String listAsDelimitedString(List<T> list, String delim) {
         StringBuffer buf = new StringBuffer();
         String d = "";

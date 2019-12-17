@@ -3,7 +3,6 @@ package ast;
 import java.util.List;
 import java.util.LinkedList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.io.PrintStream;
 
 import interpreter.Env;
@@ -12,7 +11,8 @@ public class Program extends ASTNode {
 
     final List<FuncDef> funcDefs;
 
-    public Program(List<FuncDef> funcDefs) {
+    public Program(List<FuncDef> funcDefs, Location loc) {
+        super(loc);
         this.funcDefs = funcDefs;
     }
 
@@ -37,7 +37,7 @@ public class Program extends ASTNode {
     }
 
     public Object exec(long argument, Env env) {
-        CallExpr call = new CallExpr("main", new LinkedList<Expr>(Arrays.asList(new ConstExpr(argument))));
+        CallExpr call = new CallExpr("main", new LinkedList<Expr>(Arrays.asList(new ConstExpr(argument, null))), null);
         return call.eval(env);
     }
 }

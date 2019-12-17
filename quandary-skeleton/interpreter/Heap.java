@@ -11,7 +11,9 @@ class Heap {
     private final long endAddr;
 
     Heap(long startAddr, long bytes) {
-        assert startAddr % 8 == 0 && bytes % 8 == 0 && bytes / BYTES_IN_WORD <= Integer.MAX_VALUE;
+        assert  bytes % 8 == 0 && bytes / BYTES_IN_WORD <= Integer.MAX_VALUE : "Heap size must be a multiple of 8 bytes and  must not exceed a threshold";
+        assert startAddr % 8 == 0 : "Heap start address must be 8-byte aligned";
+        assert startAddr > 0 : "Heap start address must be > 0";
         int words = (int) (bytes / BYTES_IN_WORD);
         this.memory = new AtomicLongArray(words);
         this.startAddr = startAddr;
@@ -39,9 +41,9 @@ class Heap {
     }
 
     private int getIndex(long addr) {
-        assert addr % 8 == 0;
+        assert addr % 8 == 0 : "Unexpected non-8-byte-aligned access";
         if (addr < startAddr || addr >= endAddr) {
-            throw new RuntimeException("Address is out of bounds");
+            throw new RuntimeException("Address " + addr + " is out of bounds");
         }
         return (int) ((addr - startAddr) / BYTES_IN_WORD);
     }

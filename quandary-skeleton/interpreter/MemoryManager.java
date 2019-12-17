@@ -5,7 +5,7 @@ abstract class MemoryManager {
     static final int WORDS_IN_CELL = 3;
     static final int BYTES_IN_CELL = Heap.BYTES_IN_WORD * WORDS_IN_CELL;
 
-    static final long INVALID_ADDR = Long.MAX_VALUE;
+    static final long NIL_ADDR = 0;
     static final long MM_WORD_OFFSET = 0; // first word of a cell has MM bits
     static final long MM_BITS = 32; // lower half of word is for MM, upper half is for type info
 

@@ -9,7 +9,8 @@ public class AssignStmt extends Stmt {
     final String ident;
     final Expr expr;
 
-    public AssignStmt(String ident, Expr expr) {
+    public AssignStmt(String ident, Expr expr, Location loc) {
+        super(loc);
         this.ident = ident;
         this.expr = expr;
     }

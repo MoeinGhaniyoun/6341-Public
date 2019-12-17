@@ -8,6 +8,7 @@ import java.util.Iterator;
 import parser.ParserWrapper;
 import ast.Program;
 import ast.FuncDef;
+import ast.Location;
 
 public class Interpreter {
 
@@ -16,14 +17,8 @@ public class Interpreter {
     public static final int EXIT_PARSING_ERROR = 1;
     public static final int EXIT_STATIC_CHECKING_ERROR = 2;
     public static final int EXIT_DYNAMIC_TYPE_ERROR = 3;
-    public static final int EXIT_QUANDARY_HEAP_OUT_OF_MEMORY_ERROR = 4;
-
-    public static final Object NIL = new Object() {
-        @Override
-        public String toString() {
-            return "nil";
-        }
-    };
+    public static final int EXIT_NIL_REF_ERROR = 4;
+    public static final int EXIT_QUANDARY_HEAP_OUT_OF_MEMORY_ERROR = 5;
 
     static private Interpreter interpreter;
 
@@ -142,29 +137,30 @@ public class Interpreter {
         return returnValue;
     }
 
-    public Object callBuiltInFunction(String ident, List<Object> actuals, Env env) {
+    public Object callBuiltInFunction(String ident, List<Object> actuals, Env env, Location loc) {
         Iterator<Object> actualsIter = actuals.iterator();
         if (ident.equals("left")) {
             CellRef cellRef = (CellRef)actualsIter.next();
-            return CellLayout.getLeftContents(cellRef.addr, heap);
+            return CellLayout.getLeftContents(cellRef.addr, heap, loc);
         } else if (ident.equals("right")) {
             CellRef cellRef = (CellRef)actualsIter.next();
-            return CellLayout.getRightContents(cellRef.addr, heap);
+            return CellLayout.getRightContents(cellRef.addr, heap, loc);
         } else if (ident.equals("isAtom")) {
-            return actualsIter.next() instanceof CellRef ? 0L : 1L;
+            Object value = actualsIter.next();
+            return value instanceof CellRef && !value.equals(CellRef.NIL) ? 0L : 1L;
         } else if (ident.equals("isNil")) {
-            return actualsIter.next().equals(NIL) ? 1L : 0L;
+            return actualsIter.next().equals(CellRef.NIL) ? 1L : 0L;
         } else if (ident.equals("setLeft")) {
             CellRef cellRef = (CellRef)actualsIter.next();
             Object newValue = actualsIter.next();
             //Object oldValue = CellLayout.getLeftContents(cellRef.addr, heap);
-            CellLayout.setLeftContents(cellRef.addr, newValue, heap);
+            CellLayout.setLeftContents(cellRef.addr, newValue, heap, loc);
             return 1L;
         } else if (ident.equals("setRight")) {
             CellRef cellRef = (CellRef)actualsIter.next();
             Object newValue = actualsIter.next();
             //Object oldValue = CellLayout.getRightContents(cellRef.addr, heap);
-            CellLayout.setRightContents(cellRef.addr, newValue, heap);
+            CellLayout.setRightContents(cellRef.addr, newValue, heap, loc);
             return 1L;
         } else if (ident.equals("acq")) {
             // TODO: implement
@@ -177,9 +173,6 @@ public class Interpreter {
             long value = random.nextLong() % formal;
             if (value < 0) value += formal;
             return value;
-        } else if (ident.equals("free")) {
-            // TODO: implement
-            throw new RuntimeException("free not yet implemented");
         } else {
             return null;
         }

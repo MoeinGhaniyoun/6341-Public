@@ -1,6 +1,6 @@
-int foo(int i, Q q, Cell c) {
+int foo(int i, Q q, Ref c) {
   int i1 = i;
-  if (isAtom(q) != 0 && isNil(q) == 0) {
+  if (isAtom(q) != 0 && isNil((Ref)q) == 0) {
     int i2 = (int)q;
   }
 
@@ -8,8 +8,8 @@ int foo(int i, Q q, Cell c) {
   Q q2 = q;
   Q q3 = c;
 
-  Cell c2 = (Cell)q;
-  Cell c3 = c;
+  Ref c2 = (Ref)q;
+  Ref c3 = c;
 
   return 0;
 }

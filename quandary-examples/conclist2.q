@@ -1,5 +1,5 @@
 mutable Q main (mutable int arg) {
-	mutable Q list = randomList(arg + 42);
+	mutable Ref list = randomList(arg + 42);
 	while (arg > 1) {
         Q dummy = [ [ rmRandomEarlyElement(list) . rmRandomEarlyElement(list) ] . rmRandomEarlyElement(list) ];
 		arg = arg - 3;
@@ -7,34 +7,34 @@ mutable Q main (mutable int arg) {
 	return length(list);
 }
 
-mutable Q rmRandomEarlyElement(Q list) {
+mutable Q rmRandomEarlyElement(Ref list) {
 	int index = randomInt(3);
-    Q dummy1 = acq((Cell)list);
-	Q dummy2 = rmElement(list, index);
-    Q dummy3 = rel((Cell)list);
+    acq(list);
+	rmElement(list, index);
+    rel(list);
     return nil;
 }
 
-int length(Q list) {
+int length(Ref list) {
 	if (isNil(list) != 0) return 0;
-	return 1 + length(right((Cell)list));
+	return 1 + length(right(list));
 }
 
-Q randomList(int length) {
+Ref randomList(int length) {
 	if (length == 0) {
         return nil;
     }
     return randomInt(100000) . randomList(length - 1);
 }
 
-mutable Q rmElement(Q list, int index) {
+mutable Q rmElement(Ref list, int index) {
     if (index == 0) {
-        Q dummy1 = setLeft((Cell)list, left((Cell)right((Cell)list)));
-        Q dummy2 = setRight((Cell)list, right((Cell)right((Cell)list)));
+        setLeft(list, left((Ref)right(list)));
+        setRight(list, right((Ref)right(list)));
     } else if (index == 1) {
-        Q dummy3 = setRight((Cell)list, right((Cell)right((Cell)list)));
+        setRight(list, right((Ref)right(list)));
     } else {
-        Q dummy4 = rmElement(right((Cell)list), index - 1);
+        rmElement(right(list), index - 1);
     }
     return nil;
 }

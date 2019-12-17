@@ -1,5 +1,5 @@
 mutable Q main(int arg) {
-  mutable Q list = nil;
+  mutable Ref list = nil;
   list = add(list, 4);
   list = add(list, 3);
   list = add(list, 5);
@@ -7,22 +7,24 @@ mutable Q main(int arg) {
   return list;
 }
 
-mutable Cell add(Q list, Q elem) {
+/* mutating add */
+mutable Ref add(Ref list, Q elem) {
   if (isNil(list) != 0) {
     return elem . nil;
   }
-  mutable Cell curr = (Cell)list;
+  mutable Ref curr = list;
   while (isNil(right(curr)) == 0) {
-    curr = (Cell)right(curr);
+    curr = right(curr);
   }
-  Q q = setRight(curr, elem . nil);
-  return (Cell)list;
+  setRight(curr, elem . nil);
+  return list;
 }
 
-Cell addR(Q list, int elem) {
+/* non-mutating add */
+Ref addR(Ref list, int elem) {
   if (isNil(list) != 0) {
     return elem . nil;
   }
-  return left((Cell)list) .
-         addR(right((Cell)list), elem);
+  return left(list) .
+         addR(right(list), elem);
 }

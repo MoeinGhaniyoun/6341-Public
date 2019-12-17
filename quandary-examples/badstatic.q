@@ -1,6 +1,6 @@
 
-Q foo(Q asdf, Cell hjkl) {
+Q foo(Q asdf, Ref hjkl) {
   x = 5;
-  Cell z = (hjkl . asdf);
-  return left((Cell)left(z));
+  Ref z = (hjkl . asdf);
+  return left((Ref)left(z));
 }

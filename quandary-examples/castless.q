@@ -1,4 +1,4 @@
-int foo(int i, Q q, Cell c) {
+int foo(int i, Q q, Ref c) {
   int i1 = i;
   int i2 = q;
   int i3 = c;
@@ -7,9 +7,9 @@ int foo(int i, Q q, Cell c) {
   Q q2 = q;
   Q q3 = c;
 
-  Cell c1 = i;
-  Cell c2 = q;
-  Cell c3 = c;
+  Ref c1 = i;
+  Ref c2 = q;
+  Ref c3 = c;
 
   return 0;
 }

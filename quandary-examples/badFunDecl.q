@@ -1,9 +1,8 @@
 mutable int main(int arg) {
-	Q x = nil;
-	int x = foo(x);
+	Ref x = nil;
 	return isNil(x);
 }
 
-mutable int isNil(Q q) {
+mutable int isNil(Ref r) {
 	return 33;
 }

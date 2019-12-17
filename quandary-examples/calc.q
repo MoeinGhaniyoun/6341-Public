@@ -13,16 +13,16 @@ int mycalc(Q expr) {
     if (isAtom(expr) != 0) {
         return (int)expr;
     }
-    Cell e = (Cell)expr;
+    Ref e = (Ref)expr;
     int op = (int)left(e);
-    Q left = left((Cell)right(e));
-    Q right = right((Cell)right(e));
+    Q left = left((Ref)right(e));
+    Q right = right((Ref)right(e));
     if (op == plus()) {
         return mycalc(left) + mycalc(right);
     }
     if (op == times()) {
         return mycalc(left) * mycalc(right);
     }
-    int badValueBecauseUnexpectedOp = (int)(Q)(42 . 42);
+    int badValueBecauseUnexpectedOp = (int)(Q)(42 . 42); /* unreachable */
     return badValueBecauseUnexpectedOp;
 }

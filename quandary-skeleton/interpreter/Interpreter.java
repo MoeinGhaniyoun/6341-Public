@@ -174,6 +174,7 @@ public class Interpreter {
             if (value < 0) value += formal;
             return value;
         } else {
+            // TODO: free() isn't supported or implemented
             return null;
         }
     }

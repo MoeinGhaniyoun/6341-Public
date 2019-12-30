@@ -1,4 +1,3 @@
-
 BUILDING AND RUNNING
 
 To get started, set two environment variables to your locations of JFlex and CUP:
@@ -26,8 +25,9 @@ but several things are missing or (intentionally) don't work correctly.
 You can search for "TODO" in the source code to find the missing and incorrect stuff. Here's a summary:
 
 - The lexer and parser don't support [ expr1 OP expr2 ] syntax. <-- 1st project
+- It doesn't recognize the built-in function free(). <-- 1st project
 - Local variables aren't handled correctly: every variable is treated like a global variable. <-- 1st project
-- It's missing support for static type checking. <-- 2nd project
+- It's missing support for static and dynamic type checking. <-- 2nd project
 - It's missing support for garbage collection (automatic memory management) and explicit memory management. <-- 3rd project
 - It's missing support for concurrency. <-- 4th project
 
@@ -62,10 +62,13 @@ PORTING TO C/C++
 
 Although the skeleton is written in Java, in theory you can port it to C/C++ and implement your interpreter in C/C++.
 
-The JFlex manual (https://jflex.de/manual.html; "Porting from lex/flex") says that the input file (Scanner.jflex) is similar in format to the format expected by the C/C++ flex tool.
+The JFlex manual (https://jflex.de/manual.html; "Porting from lex/flex") says that
+the input file (Scanner.jflex) is similar in format to the format expected by the C/C++ flex tool.
 
 Likewise, Java CUP is based on the C/C++ tool YACC, and they use similar input file formats (Parser.cup).
 
 So you can probably port the Scanner.jflex file to flex, and the Parser.cup file to YACC, as part of porting the Java code to C/C++.
 
-However, Java is strongly recommended, especially if you want to use C++ because you're not (as) comfortable with Java. Learning Java isn't hard for a C++ programmer, and it might actually take you no more time than converting the skeleton to C++ -- and then you'll know a new language!
+However, Java is strongly recommended, especially if you want to use C++ because you're not (as) comfortable with Java.
+Learning Java isn't hard for a C++ programmer, and it might actually take you no more time
+than converting the skeleton to C++ -- and then you'll know a new language!

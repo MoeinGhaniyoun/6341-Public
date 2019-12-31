@@ -25,7 +25,7 @@ but several things are missing or (intentionally) don't work correctly.
 You can search for "TODO" in the source code to find the missing and incorrect stuff. Here's a summary:
 
 - The lexer and parser don't support [ expr1 OP expr2 ] syntax. <-- 1st project
-- It doesn't recognize the built-in function free(). <-- 1st project
+- It doesn't recognize free statements. <-- 1st project
 - Local variables aren't handled correctly: every variable is treated like a global variable. <-- 1st project
 - It's missing support for static and dynamic type checking. <-- 2nd project
 - It's missing support for garbage collection (automatic memory management) and explicit memory management. <-- 3rd project

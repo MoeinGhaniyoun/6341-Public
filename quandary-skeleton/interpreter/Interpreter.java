@@ -72,6 +72,7 @@ public class Interpreter {
         }
         try {
             // TODO: the lexer and parser (and interpreter) don't support concurrent binary expressions, i.e., [ expr1 OP expr2 ]
+            // TODO: the lexer and parser (and interpreter) don't support free statements
             astRoot = ParserWrapper.parse(reader);
         } catch (Exception ex) {
             Interpreter.fatalError("Uncaught parsing error: " + ex, Interpreter.EXIT_PARSING_ERROR);
@@ -174,7 +175,6 @@ public class Interpreter {
             if (value < 0) value += formal;
             return value;
         } else {
-            // TODO: free() isn't supported or implemented
             return null;
         }
     }

@@ -68,6 +68,7 @@ white_space = {new_line} | [ \t\f]
 "if"              { return symbol("if",          IF); }
 "else"            { return symbol("else",        ELSE); }
 "while"           { return symbol("while",       WHILE); }
+"print"           { return symbol("print",       PRINT); }
 "return"          { return symbol("return",      RETURN); }
 
 /* int literals */

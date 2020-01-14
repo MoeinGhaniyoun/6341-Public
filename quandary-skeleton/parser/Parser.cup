@@ -28,7 +28,7 @@ parser code {:
 :};
 
 terminal INT, REF, QTYPE, MUTABLE, NIL,
-         IF, ELSE, WHILE, RETURN,
+         IF, ELSE, WHILE, PRINT, RETURN,
          SEMICOLON, COMMA, LPAREN, RPAREN, BEGIN, END,
          ASSIGN, PLUS, MINUS, UMINUS, TIMES, DOT,
          LE, GE, EQ, NE, LT, GT, AND, OR, NOT;
@@ -117,6 +117,8 @@ stmt ::= varDecl:d ASSIGN expr:e SEMICOLON
     {: RESULT = new WhileStmt(e, s, loc(wleft, wright)); :}
     | IDENT:i LPAREN exprList:l RPAREN SEMICOLON
     {: RESULT = new CallStmt(new CallExpr(i, l, loc(ileft, iright))); :}
+    | PRINT:r expr:e SEMICOLON
+    {: RESULT = new PrintStmt(e, loc(rleft, rright)); :}
     | RETURN:r expr:e SEMICOLON
     {: RESULT = new ReturnStmt(e, loc(rleft, rright)); :}
     | BEGIN:b stmtList:l END

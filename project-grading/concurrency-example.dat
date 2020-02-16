@@ -32,3 +32,4 @@
 4  conclist2.q   2000 -gc NoGC -heapsize 1638400
 4  concsum2.q     100 -gc NoGC -heapsize 1638400
 4  concsum2.q     200 -gc NoGC -heapsize 1638400
+
